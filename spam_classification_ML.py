@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time  : 2020/5/9 14:44
-# @Author : sjw
-# @Desc : ==============================================
-# If this runs wrong,don't ask me,I don't know why;  ===
-# If this runs right,thank god,and I don't know why. ===
-# ======================================================
-# @Project : text-classification
-# @FileName: spam_email_classification.py
-# @Software: PyCharm
 import numpy as np
 import pandas as pd
 import xgboost as xgb
@@ -146,24 +136,4 @@ print("RF confusion: ", confusion_matrix(label_dev, result_rf))
 print("XGB confusion: ", confusion_matrix(label_dev, result_xgb))
 print("LGBM confusion: ", confusion_matrix(label_dev, result_lgbm))
 
-# 验证模型的性能
-# 利用交叉验证
-# accuracy = cross_val_score(clf, data_train_cnt, label_train, cv='warn', scoring='accuracy')
-# print(accuracy.mean())
 
-# 预测并写入文件，输出可以提交的格式
-# 由于比赛提交需要实名认证，暂时选择不提交，后续可以选择kaggle
-# test_data_id = pd.read_csv("data/test_noLabel.csv", usecols=[0], encoding='utf-8')
-# test_data_email = pd.read_csv("data/test_noLabel.csv", usecols=[1], encoding='utf-8')
-# test_data_email = np.array(test_data_email).reshape((1, len(test_data_email)))[0].tolist()
-# test_data_id = np.array(test_data_id).tolist()
-# data_test_cnt = vectorizer.transform(test_data_email)
-# print(test_data_id)
-# # 进行预测
-# predict_label = svm.predict(data_test_cnt)
-# # 写入文件
-# for i, label in enumerate(predict_label):
-#     test_data_id[i].append(label)
-# column_name = ['ID', 'Label']
-# result = pd.DataFrame(columns=column_name, data=test_data_id)
-# result.to_csv("result_submit_NB.csv", index=False)
